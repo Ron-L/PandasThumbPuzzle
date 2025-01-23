@@ -34,6 +34,7 @@ FPOINTS_5 = [
     (MARGIN+600, MARGIN+216),
     (MARGIN+300, MARGIN+000),
 ]
+# pick a set of fixed points to use
 FPOINTS = FPOINTS_6
 
 # Genetic Algorithm Tuning "Constants"
@@ -385,7 +386,7 @@ def main():
             # print it
             print(f"Gen {gen:6d}: {best[LENX]:4.13f} : {sorted(best[SPOINTSX], key=get_coord_val)}")
 
-        # Have we been stagnant too long? (check here AFTER updating best in case last one is best)
+        # Have we been stagnant too long without improving? (check here AFTER updating best in case last one is best)
         if stagnant_cnt > MAX_STAGNANT_CNT:
 
             # redraw the best one
@@ -400,4 +401,5 @@ def main():
             break
 
 ###############################################################################
-main()
+if __name__ == '__main__':
+    main()
