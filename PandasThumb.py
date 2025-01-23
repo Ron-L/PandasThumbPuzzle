@@ -1,5 +1,5 @@
 import copy
-import cv2
+import cv2  # pip install opencv-python
 import math
 import numpy as np
 import random
