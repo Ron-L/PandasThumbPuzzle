@@ -348,8 +348,8 @@ def main():
         img = np.zeros((WH, WW, 3), np.uint8)
 
         # draw the network in the image
-        title = 'Total Length = %.3f' % (tlen,)
-        subtitle = "Gen %d: %s" % (gen, str(sorted(spoints, key=get_coord_val)))
+        title = f'Total Length = {tlen:.3f}'
+        subtitle = f"Gen {gen}: {str(sorted(spoints, key=get_coord_val))}"
         exit_text = "[ESC] to exit"
         if STEP:
             exit_text += ", any other key to step"
@@ -383,14 +383,14 @@ def main():
             bestGenNum = gen
 
             # print it
-            print("Gen %6d: %4.13f : %s" % (gen, best[LENX], sorted(best[SPOINTSX], key=get_coord_val)))
+            print(f"Gen {gen:6d}: {best[LENX]:4.13f} : {sorted(best[SPOINTSX], key=get_coord_val)}")
 
         # Have we been stagnant too long? (check here AFTER updating best in case last one is best)
         if stagnant_cnt > MAX_STAGNANT_CNT:
 
             # redraw the best one
-            title = 'Total Length = %.3f' % (best[LENX],)
-            subtitle = "# of gens: %d. Best: #%d %s" % (gen, bestGenNum, str(sorted(best[SPOINTSX], key=get_coord_val)))
+            title = f"Total Length = {best[LENX]:.3f}"
+            subtitle = f"# of gens: {gen}. Best: #{bestGenNum} {str(sorted(best[SPOINTSX], key=get_coord_val))}"
             exit_text = "Complete. Hit any key to exit."
             draw_network(img, best[SPOINTSX], best[SEGMENTSX], title, subtitle, exit_text)
 
